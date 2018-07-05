@@ -1,0 +1,23 @@
+version: '3'
+services:
+ site1:
+  build:
+   context: ./site1
+   dockerfile: Dockerfile
+  ports:
+  - "11111:80"
+ site2:
+  image: nginx:latest
+  ports:
+  - "22222:80"
+  volumes:
+  - ./site2/html:/var/www/html
+  - ./site2/html:/usr/share/nginx/html/
+  - ./site2/site2.conf:/etc/nginx/conf.d/site.conf
+  - ./site2/default.conf:/etc/nginx/conf.d/default.conf
+  links:
+  - php
+ php:
+  image: php:7-fpm
+  volumes:
+  - ./site2/html:/var/www/html
