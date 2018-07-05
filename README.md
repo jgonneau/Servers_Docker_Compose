@@ -1,16 +1,16 @@
-## How to start
+# How to start
 
 '''
 docker-compose up
 '''
 
-# Load balancing strategy
+## Load balancing strategy
 
 '''
 least_conn
 '''
 
-# Name
+## Name
 '''
 Gonneau Jean Paul
 '''
