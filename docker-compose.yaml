@@ -1,4 +1,4 @@
-version: '3'
+version: '2'
 services:
  site1:
   build:
@@ -13,11 +13,20 @@ services:
   volumes:
   - ./site2/html:/var/www/html
   - ./site2/html:/usr/share/nginx/html/
-  - ./site2/site2.conf:/etc/nginx/conf.d/site.conf
   - ./site2/default.conf:/etc/nginx/conf.d/default.conf
-  links:
-  - php
- php:
+  depends_on:
+  - php1
+  - php2
+  - php3
+ php1:
+  image: php:7-fpm
+  volumes:
+  - ./site2/html:/var/www/html
+ php2:
+  image: php:7-fpm
+  volumes:
+  - ./site2/html:/var/www/html
+ php3:
   image: php:7-fpm
   volumes:
   - ./site2/html:/var/www/html
